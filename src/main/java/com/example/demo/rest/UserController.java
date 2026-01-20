@@ -31,13 +31,13 @@ public class UserController {
 
     @GetMapping("/users")
     public List<User> getUsers() {
-
-        return List.of();
+        return userService.getUsers();
     }
 
     @PostMapping("/users")
     public ResponseEntity<User> postUser(@RequestBody User user) {
         log.info("postUsers with user {}", user);
+        userService.saveUser(user);
         return ResponseEntity.ok(user);
     }
 }
