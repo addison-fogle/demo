@@ -8,10 +8,7 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,14 +27,19 @@ public class EmployeeController {
     private Employee employee;
 
     @GetMapping("/employees")
-    public List<Employee> getUsers() {
+    public List<Employee> getEmployees() {
         return employeeService.getEmployees();
     }
 
     @PostMapping("/employees")
-    public ResponseEntity<Employee> postUser(@RequestBody Employee employee) {
+    public ResponseEntity<Employee> postEmployees(@RequestBody Employee employee) {
         log.info("postUsers with user {}", employee);
         employeeService.saveEmployee(employee);
         return ResponseEntity.ok(employee);
+    }
+
+    @GetMapping("/employee/{id}")
+    public Employee getEmployee(@PathVariable Long id) {
+        return employeeService.getEmployee(id);
     }
 }
