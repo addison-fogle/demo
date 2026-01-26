@@ -11,16 +11,20 @@ import org.springframework.stereotype.Component;
 
 @Getter
 @Setter
-@Entity(name = "user")
-@Table(name = "users")
+@Entity(name = "employees")
+@Table(name = "employees")
 @Component
-public class User {
+public class Employee {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+    private Long employee_id;
 
-    private String username;
+    private String first_name;
 
-    private String email;
+    private String last_name;
+
+            private String department;
+
+    private double salary;
 }

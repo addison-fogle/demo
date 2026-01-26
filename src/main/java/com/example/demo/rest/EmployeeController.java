@@ -1,7 +1,7 @@
 package com.example.demo.rest;
 
-import com.example.demo.entities.User;
-import com.example.demo.service.UserService;
+import com.example.demo.entities.Employee;
+import com.example.demo.service.EmployeeService;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,23 +21,23 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @RestController
-public class UserController {
+public class EmployeeController {
 
     @Autowired
-    private UserService userService;
+    private EmployeeService employeeService;
 
     @Autowired
-    private User user;
+    private Employee employee;
 
-    @GetMapping("/users")
-    public List<User> getUsers() {
-        return userService.getUsers();
+    @GetMapping("/employees")
+    public List<Employee> getUsers() {
+        return employeeService.getEmployees();
     }
 
-    @PostMapping("/users")
-    public ResponseEntity<User> postUser(@RequestBody User user) {
-        log.info("postUsers with user {}", user);
-        userService.saveUser(user);
-        return ResponseEntity.ok(user);
+    @PostMapping("/employees")
+    public ResponseEntity<Employee> postUser(@RequestBody Employee employee) {
+        log.info("postUsers with user {}", employee);
+        employeeService.saveEmployee(employee);
+        return ResponseEntity.ok(employee);
     }
 }
